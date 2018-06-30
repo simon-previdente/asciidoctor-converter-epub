@@ -1,10 +1,10 @@
 {
-  "name": "asciidoctor-converter-opendocument",
+  "name": "asciidoctor-converter-epub",
   "version": "1.0.0-alpha.1",
-  "description": "Convert Asciidoc documents to OpenDocument (ODT) files.",
+  "description": "Convert Asciidoc documents to EPUB files.",
   "main": "index.js",
   "dependencies": {
-    "simple-odf": "^0.2.0"
+    "epub-maker": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1"
@@ -16,25 +16,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oncletom/asciidoctor-converter-opendocument.git"
+    "url": "git+https://github.com/simon-previdente/asciidoctor-converter-epub"
   },
   "keywords": [
     "asciidoctor",
     "asciidoc",
     "converter",
-    "opendocument",
-    "odt",
-    "odf"
+    "epub"
   ],
   "prettier": {
     "arrowParens": "always",
     "bracketSpacing": false,
     "singleQuote": true
   },
-  "author": "Thomas Parisot (https://oncletom.io)",
+  "author": "Simon Prévidente (https://simon-previdente.fr)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oncletom/asciidoctor-converter-opendocument/issues"
+    "url": "https://github.com/simon-previdente/asciidoctor-converter-epub/issues"
   },
-  "homepage": "https://github.com/oncletom/asciidoctor-converter-opendocument#readme"
+  "homepage": "https://github.com/simon-previdente/asciidoctor-converter-epub#readme"
 }

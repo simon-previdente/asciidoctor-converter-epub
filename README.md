@@ -1,2 +1,2 @@
-# asciidoctor-converter-opendocument
-Convert Asciidoc documents to OpenDocument (ODT) files.
+# asciidoctor-converter-epub
+Convert Asciidoc documents to EPUB files.

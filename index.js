@@ -1,15 +1,15 @@
 'use strict';
 
-const simpleOdf = require('simple-odf');
+const epubMaker = require('epub-maker');
 
-module.exports = function ConverterODT(Asciidoctor) {
-  class ODTConverter {
+module.exports = function ConverterEPUB(Asciidoctor) {
+  class EPUBConverter {
     constructor(backend, opts) {
       this.basebackend = 'xml';
-      this.outfilesuffix = '.odt';
+      this.outfilesuffix = '.epub';
       this.filetype = 'xml';
       this.htmlsyntax = 'xml';
-      this._doc = new simpleOdf.TextDocument();
+      this._doc = new EpubMaker();
     }
 
     $convert(node, transform = null, opts = {}) {
@@ -21,15 +21,15 @@ module.exports = function ConverterODT(Asciidoctor) {
           return String(doc);
 
         case 'section':
-          doc.addHeading(node.getTitle(), node.getLevel());
-          doc.addParagraph(node.getContent());
+          if(node.getLevel() == 0) {
+            doc.withSection('chapter', node.getId(), { title: node.getTitle(), content: node.getContent() }, true, false);
+          } else {
+            doc.withSub('chapter', node.getId(), { title: node.getTitle(), content: node.getContent() }, true, false);
+          }
           return '';
-        // return ['#'.repeat(node.getLevel()) + ' ' + node.getTitle(), node.getContent()].join('\n\n');
 
         case 'paragraph':
-          doc.addParagraph(node.getContent());
-          return '';
-        // return node.getContent().trim() + '\n';
+          return node.getContent();
 
         case 'inline_quoted':
         case 'inline_anchor':
@@ -51,5 +51,5 @@ module.exports = function ConverterODT(Asciidoctor) {
     }
   }
 
-  Asciidoctor.Converter.Factory.$register(new ODTConverter('odt'), ['odt']);
+  Asciidoctor.Converter.Factory.$register(new EPUBConverter('epub'), ['epub']);
 };
